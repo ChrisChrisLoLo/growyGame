@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--Initail CSS styling from https://www.w3schools.com/css/css_rwd_grid.asp-->
+<!--Most code involving setting up the responsive grid view is used from the W3schools website-->
+<html>
+	<head>
+		<!--meta allows browser to control scaling, helps for mobile-->
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Grow stuff</title>
+		<style>
+			html{
+				font-family:"Lucida Sans",sans-serif;
+				background-color: dimgray;
+			}
+			*{
+				box-sizing: border-box;
+			}
+			body{
+				height: 100%;
+			}
+			.col-1 {width: 8.33%;}
+			.col-2 {width: 16.66%;}
+			.col-3 {width: 25%;}
+			.col-4 {width: 33.33%;}
+			.col-5 {width: 41.66%;}
+			.col-6 {width: 50%;}
+			.col-7 {width: 58.33%;}
+			.col-8 {width: 66.66%;}
+			.col-9 {width: 75%;}
+			.col-10 {width: 83.33%;}
+			.col-11 {width: 91.66%;}
+			.col-12 {width: 100%;}
+			
+			@media only screen and (max-width: 768px) {
+				/* For mobile phones: */
+				[class*="col-"] {
+					width: 100%;
+				}
+			}
+			
+			[class*="col-"] {
+				float: left;
+				padding: 15px;
+				border: 1px solid black;
+			}
+			.row::after {
+				content: "";
+				clear: both;
+				display: table;
+			}
+			.header{
+				margin: 0px;
+				background-color: darkgrey;
+				padding:5px;
+			}
+			#gamePanel{
+				height: 450px;
+			}
+			
+			.buttonRow{
+				align-content: center;
+				width: 100%;
+				padding:0px;
+				height: 50px
+			}
+			.landPlot{
+				margin:0px;
+				height:30px;
+				padding:0px;
+				width:11%;
+				height:99%;
+				background-color: rosybrown;
+			}
+			#gridContainer{
+				
+			}
+			#gridCol{
+				background-image: url("art/dirt.png");
+				background-color: brown;
+				height: 100%
+
+				
+			}
+			.toolButton{
+				height:px;
+			}
+			#toolCol{
+				height: 100%;
+				background-image: url("art/wood.png");
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header" id="tabPanel">
+			<h1>GrowyGame</h1>
+			<p>Game by Christopho Loseph</p>
+		</div>
+		<div class="row">
+		  	<div class="col-9">TABS</div> <!-- 75% -->
+			<div class="col-3">BLANK</div> <!-- 25% -->
+		</div>
+		<div class="row" id= "gamePanel">
+			<div class="col-9" id="gridCol">
+				<div class = "grid" id="gridContainer">
+				<!--Row 0-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=0 j=7></button>
+				</div>
+				<!--Row 1-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=1 j=7></button>
+				</div>
+				<!--Row 2-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=2 j=7></button>
+				</div>
+				<!--Row 3-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=3 j=7></button>
+				</div>
+				<!--Row 4-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=4 j=7></button>
+				</div>
+				<!--Row 5-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=5 j=7></button>
+				</div>
+				<!--Row 6-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=6 j=7></button>
+				</div>
+				<!--Row 7-->
+				<div class="buttonRow">
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=0></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=1></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=2></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=3></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=4></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=5></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=6></button>
+					<button class="landPlot" onClick="usePlot(this.id);" i=7 j=7></button>
+				</div>
+			</div>		
+			</div>
+			<div class="col-3" id="toolCol" style = "overflow: auto;">
+				<button class="toolButton" onClick="selTool(this.id);" id="inspect">Inspect</button><br/>
+				<button class="toolButton" onClick="selTool(this.id);" id="harvest">Harvest</button><br/>
+				<button class="toolButton" onClick="selTool(this.id);" id="Plant Grass">Plant Grass</button><br/>
+				<button class="toolButton" onClick="selTool(this.id);" id="Plant Turnip">Plant Turnip</button><br/>
+				<button class="toolButton" onClick="selTool(this.id);" id="Plant Beet">Plant Beet</button><br/>
+				<button class="toolButton" onClick="selTool(this.id);" id="Plant Rhubarb">Plant Rhubarb</button><br/>
+			</div>
+		</div>
+		<div class="row" id="infoPanel">
+			<div class="col-4"></div>
+			<div class="col-4"></div>
+			<div class="col-4"></div>
+		</div>
+	</body>
+</html>
