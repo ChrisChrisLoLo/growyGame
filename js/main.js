@@ -34,7 +34,5 @@ function usePlot(plotID){
 
 function plant(cropName,plotID){
     document.getElementById(plotID).style.backgroundColor = "Green";
-    initTime = new Date();
-    console.log(initTime.getTime());
-    //document.getElementByID(plotID).setAttribute("timestamp",)
+    
 }
