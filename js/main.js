@@ -13,7 +13,9 @@ function crop(name,growTime,buyPrice,sellPrice,timeStamp,plotID){
     //Timestamp to be determined at the point of creation in plant query.
     this.timeStamp = timeStamp;
 	this.finishTime = timeStamp+growTime;
+    this.state = "growing";
 	this.remGrowTime = null;
+    this.remDecayTime = null;
 	this.decayTime = null;
 }
 
@@ -87,10 +89,16 @@ function plant(cropName,plotID){
 }
 
 function checkGrowth(){
+    //may need to move date and time within scope if this function becomes too long
+    //took time out as function works fine as is 
+    //TODO: test the run time of this function to see if it runs under a second.
+    var date = new Date();
+    //should have remGrowTime in terms of milliseconds
+    var currentTime = date.getTime();
 	for(var i=0; i<plantedQueue.length;i++){
-		var date = new Date();
-		//should have remGrowTime in terms of milliseconds
-		var currentTime = date.getTime();
+        var date = new Date();
+        //should have remGrowTime in terms of milliseconds
+        var currentTime = date.getTime();
 		plantedQueue[i].remGrowTime = plantedQueue[i].finishTime - currentTime;
 		console.log(plantedQueue[i].remGrowTime);
 		
@@ -98,20 +106,33 @@ function checkGrowth(){
 		//it is able to be harvested. when the time for the decay queue is up, then the plant
 		//decays.
 		if (plantedQueue[i].remGrowTime<0){
-			//sell price to be removed
-			globalVal.money += plantedQueue[i].sellPrice;
+			plantedQueue.state = "grown";
 			document.getElementById(plantedQueue[i].plotID).style.backgroundColor = "BurlyWood";
 			document.getElementById(plantedQueue[i].plotID).innerHTML = "🌾";
+            
+            
+            plantedQueue[i].decayTime = currentTime + (plantedQueue[i].growTime*2);
 			plantDecayQueue.push(plantedQueue[i])
 			//BUG: need to have a list to splice after we are done the loop,
 			//or we get indexing errors and the timings become off.
 			plantedQueue.splice(i,1);
 		}
 	}
-	
+	//calc if crop has spoiled. Since we aren't displaying rem time we can simplify calcs
 	for (var i=0; i<plantDecayQueue.length;i++){
-		
+		var date = new Date();
+        var currentTime = date.getTime();
+        var spliceArray = [];
+        if (plantDecayQueue[i].decayTime < currentTime){
+            plantDecayQueue[i].state = "dead";
+            document.getElementById(plantDecayQueue[i].plotID).style.backgroundColor = "black";
+            console.log("DEAD");
+            delete plantDecayQueue[i]
+        }  
 	}
+    //filters out holes created in array.
+    plantDecayQueue.filter(crop => crop.decayTime < currentTime);
 }
+
 
 setInterval(checkGrowth,1000);
