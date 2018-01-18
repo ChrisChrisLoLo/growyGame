@@ -67,6 +67,7 @@ function plant(cropName,plotID){
 	}
 	
     document.getElementById(plotID).style.backgroundColor = "Green";
+	document.getElementById(plotID).innerHTML = "🌱";
 	var date = new Date();
 	timeStamp = date.getTime();
 	console.log(timeStamp);
@@ -99,10 +100,17 @@ function checkGrowth(){
 		if (plantedQueue[i].remGrowTime<0){
 			//sell price to be removed
 			globalVal.money += plantedQueue[i].sellPrice;
-			document.getElementById(plantedQueue[i].plotID).style.backgroundColor = "black";
+			document.getElementById(plantedQueue[i].plotID).style.backgroundColor = "BurlyWood";
+			document.getElementById(plantedQueue[i].plotID).innerHTML = "🌾";
 			plantDecayQueue.push(plantedQueue[i])
+			//BUG: need to have a list to splice after we are done the loop,
+			//or we get indexing errors and the timings become off.
 			plantedQueue.splice(i,1);
 		}
+	}
+	
+	for (var i=0; i<plantDecayQueue.length;i++){
+		
 	}
 }
 
