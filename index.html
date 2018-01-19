@@ -11,6 +11,7 @@
 			html{
 				font-family: "emojiFont","Lucida Sans",sans-serif;
 				background-color: dimgray;
+                font-size: 18px
 			}
 			*{
 				box-sizing: border-box;
@@ -56,7 +57,6 @@
 			#gamePanel{
 				height: 450px;
 			}
-			
 			.buttonRow{
 				//align-content: center;
 				width: 100%;
@@ -81,7 +81,8 @@
 				height: 100%;
 			}
 			.toolButton{
-				height:px;
+				width:100%;
+                font-size: 20px;
 			}
 			#toolCol{
 				height: 100%;
@@ -193,24 +194,34 @@
 				</div>
 			</div>		
 			</div>
-			<div class="col-3" id="toolCol" style = "overflow: auto;">
+			<div class="col-3" id="toolCol">
 				<div id="toolContainer">
-					<button class="toolButton" onClick="selTool(this.id);" id="inspect">Inspect</button><br/>
-					<button class="toolButton" onClick="selTool(this.id);" id="harvest">Harvest</button><br/>
-					<button class="toolButton" onClick="selTool(this.id);" id="destroy">Destroy Crop</button><br/>
-					<button class="toolButton" onClick="selTool(this.id);" id="pGrass">Plant Grass</button><br/>
-					<button class="toolButton" onClick="selTool(this.id);" id="pTurnip">Plant Turnip</button><br/>
-					<button class="toolButton" onClick="selTool(this.id);" id="pBeet">Plant Beet</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="inspect">Inspect</button>
+					<button class="toolButton" onClick="selTool(this.id);" id="harvest">Harvest</button>
+					<button class="toolButton" onClick="selTool(this.id);" id="destroy">Destroy Crop</button>
+					<button class="toolButton" onClick="selTool(this.id);" id="pGrass">Plant Grass</button>
+					<button class="toolButton" onClick="selTool(this.id);" id="pTurnip">Plant Turnip</button>
+					<button class="toolButton" onClick="selTool(this.id);" id="pBeet">Plant Beet</button>
 					<button class="toolButton" onClick="selTool(this.id);" id="pRhubarb">Plant Rhubarb</button><br/>
 				</div>
 			</div>
 		</div>
-		<div class="row" id="infoPanel">
-			<div class="col-4"></div>
-			<div class="col-4"></div>
-			<div class="col-4"></div>
+        <div class="row" id="statsPanel">
+            <div class="col-8">
+                Plot Info: <span id="plotInfo"></span>
+            </div>
+            <div class="col-4">
+                Money: <span id="moneyInfo"></span>
+            </div>
+            
+        </div>
+		<div class="row" id="tabPanel">
+			<div class="col-4">Shop</div>
+			<div class="col-4">Glonal Stats(?)</div>
+			<div class="col-4">Settings</div>
 		</div>
-		<script src="js/cropsAndPlants.js"></script>
+        <script src="js/cropsAndPlants.js"></script>
+        <script src="js/inspect.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>

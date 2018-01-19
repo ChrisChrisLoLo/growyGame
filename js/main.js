@@ -12,6 +12,7 @@ function usePlot(plotID){
     console.log("usePlotCall");
     switch(globalVal.currentTool){
         case "inspect":
+            inspect(plotID);
             break;
         case "harvest":
             break;
