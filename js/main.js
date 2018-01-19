@@ -15,6 +15,7 @@ function usePlot(plotID){
             inspect(plotID);
             break;
         case "harvest":
+            harvest(plotID);
             break;
         case "destroy":
             break;

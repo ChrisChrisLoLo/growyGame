@@ -78,7 +78,7 @@ function checkGrowth(){
         //should have remGrowTime in terms of milliseconds
         var currentTime = date.getTime();
 		plantedQueue[i].remGrowTime = plantedQueue[i].finishTime - currentTime;
-		console.log(plantedQueue[i].remGrowTime);
+		//console.log(plantedQueue[i].remGrowTime);
 		
 		//once the crop has matured, the crop item is to be moved to the decay queue, where
 		//it is able to be harvested. when the time for the decay queue is up, then the plant decays.
