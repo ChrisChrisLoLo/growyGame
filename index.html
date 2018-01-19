@@ -95,7 +95,9 @@
 			<p>Game by Christopho Loseph</p>
 		</div>
 		<div class="row">
-		  	<div class="col-9">TABS</div> <!-- 75% -->
+		  	<div class="col-9">
+				Money:300 weather:cloudy hot sales: flamingos
+			</div> <!-- 75% -->
 			<div class="col-3">BLANK</div> <!-- 25% -->
 		</div>
 		<div class="row" id= "gamePanel">
@@ -192,13 +194,15 @@
 			</div>		
 			</div>
 			<div class="col-3" id="toolCol" style = "overflow: auto;">
-				<button class="toolButton" onClick="selTool(this.id);" id="inspect">Inspect</button><br/>
-				<button class="toolButton" onClick="selTool(this.id);" id="harvest">Harvest</button><br/>
-                <button class="toolButton" onClick="selTool(this.id);" id="destroy">Destroy Crop</button><br/>
-				<button class="toolButton" onClick="selTool(this.id);" id="pGrass">Plant Grass</button><br/>
-				<button class="toolButton" onClick="selTool(this.id);" id="pTurnip">Plant Turnip</button><br/>
-				<button class="toolButton" onClick="selTool(this.id);" id="pBeet">Plant Beet</button><br/>
-				<button class="toolButton" onClick="selTool(this.id);" id="pRhubarb">Plant Rhubarb</button><br/>
+				<div id="toolContainer">
+					<button class="toolButton" onClick="selTool(this.id);" id="inspect">Inspect</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="harvest">Harvest</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="destroy">Destroy Crop</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="pGrass">Plant Grass</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="pTurnip">Plant Turnip</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="pBeet">Plant Beet</button><br/>
+					<button class="toolButton" onClick="selTool(this.id);" id="pRhubarb">Plant Rhubarb</button><br/>
+				</div>
 			</div>
 		</div>
 		<div class="row" id="infoPanel">
@@ -206,6 +210,7 @@
 			<div class="col-4"></div>
 			<div class="col-4"></div>
 		</div>
+		<script src="js/cropsAndPlants.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
