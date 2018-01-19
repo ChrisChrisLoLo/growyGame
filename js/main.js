@@ -103,20 +103,16 @@ function checkGrowth(){
 		console.log(plantedQueue[i].remGrowTime);
 		
 		//once the crop has matured, the crop item is to be moved to the decay queue, where
-		//it is able to be harvested. when the time for the decay queue is up, then the plant
-		//decays.
+		//it is able to be harvested. when the time for the decay queue is up, then the plant decays.
 		if (plantedQueue[i].remGrowTime<0){
 			plantedQueue.state = "grown";
 			document.getElementById(plantedQueue[i].plotID).style.backgroundColor = "BurlyWood";
 			document.getElementById(plantedQueue[i].plotID).innerHTML = "🌾";
-            
-            
             plantedQueue[i].decayTime = currentTime + (plantedQueue[i].growTime*2);
 			plantDecayQueue.push(plantedQueue[i])
-			//BUG: need to have a list to splice after we are done the loop,
-			//or we get indexing errors and the timings become off.
-			plantedQueue.splice(i,1);
 		}
+		//filter out all grown plants and move them to the decay list
+		plantedQueue = plantedQueue.filter(crop => crop.state != "grown");
 	}
 	//calc if crop has spoiled. Since we aren't displaying rem time we can simplify calcs
 	for (var i=0; i<plantDecayQueue.length;i++){
@@ -125,11 +121,13 @@ function checkGrowth(){
         var spliceArray = [];
         if (plantDecayQueue[i].decayTime < currentTime){
             plantDecayQueue[i].state = "dead";
-            document.getElementById(plantDecayQueue[i].plotID).style.backgroundColor = "black";
+           	document.getElementById(plantDecayQueue[i].plotID).style.backgroundColor = "black";
+			document.getElementById(plantDecayQueue[i].plotID).innerHTML =" ";
             console.log("DEAD");
-            delete plantDecayQueue[i]
         }  
 	}
+	
+	 plantDecayQueue = plantDecayQueue.filter(crop => crop.state != "dead");
     //filters out holes created in array.
     /*
     plantDecayQueue.filter(crop => crop.decayTime < currentTime);
