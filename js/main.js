@@ -131,7 +131,9 @@ function checkGrowth(){
         }  
 	}
     //filters out holes created in array.
+    /*
     plantDecayQueue.filter(crop => crop.decayTime < currentTime);
+    */
 }
 
 
