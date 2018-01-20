@@ -29,7 +29,7 @@ function usePlot(plotID){
 			plant("rose",plotID);
 			break;
 		case "pCactus":
-			plant("Cactus",plotID);
+			plant("cactus",plotID);
 			break;
 		case "pPalmTree":
 			plant("palmTree",plotID);

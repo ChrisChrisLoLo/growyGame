@@ -2,7 +2,7 @@ function harvest(plotID){
     var cropToHarvest = searchCropWithID(plotID);
     //if no crop found
     if (cropToHarvest){
-        if(cropToHarvest.state == "grown"){
+        if(cropToHarvest.state == "Grown"){
             console.log("Harvested!");
             globalVal.money += cropToHarvest.sellPrice;
             var index = plantDecayQueue.indexOf(cropToHarvest);

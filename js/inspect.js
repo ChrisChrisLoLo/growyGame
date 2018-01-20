@@ -22,11 +22,15 @@ function searchCropWithID(inputPlotID){
     }
 }
 
+//code for this function was modified from from https://gist.github.com/robertpataki/d0b40a1cbbb71764dd94e16cbc99d42f
 function millisToTime(millis){
-	var seconds = Math.floor((millis/1000)%60);
-	var minutes = Math.floor((millis/(60*1000))%60);
-	//var hours = Math.floor((millis/(60*60*1000)%60);
-	return minutes + ":" + seconds;
+        let hours = Math.floor(millis / (1000 * 60 * 60) % 60);
+        let minutes = Math.floor(millis / (1000 * 60) % 60);
+        let seconds = Math.floor(millis / 1000 % 60);
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return hours + ':'+ minutes + ':' + seconds
 }
 
 
@@ -36,7 +40,7 @@ function inspect(inputPlotID){
         document.getElementById("plotInfo").innerHTML = "Dirt";
     }
     else{
-        var infoString=  "Type:"+ inspectedLand.name+" State:"+inspectedLand.state+" Remaining Time: "+millisToTime(inspectedLand.remGrowTime);
+        var infoString=  "Type: "+ inspectedLand.name+"<br/>State: "+inspectedLand.state+" <br/>Remaining Time: "+millisToTime(inspectedLand.remGrowTime);
         document.getElementById("plotInfo").innerHTML = infoString;
     }
 }
