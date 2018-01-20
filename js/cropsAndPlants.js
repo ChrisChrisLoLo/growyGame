@@ -1,5 +1,6 @@
 
-function crop(name,growTime,buyPrice,sellPrice,timeStamp,plotID){
+function crop(name,icon,growTime,buyPrice,sellPrice,timeStamp,plotID){
+	this.icon = icon;
     this.name = name;
     this.growTime = growTime;
     this.buyPrice = buyPrice;
@@ -15,7 +16,7 @@ function crop(name,growTime,buyPrice,sellPrice,timeStamp,plotID){
 }
 
 var globalVal = {
-	money: 10,
+	money: 100000,
 	currentTool: "inspect",
 }
 
@@ -55,16 +56,34 @@ function plant(cropName,plotID){
 	console.log(timeStamp);
     switch(cropName){
         case "grass":
-			plantedQueue.push(new crop("grass",10000,5,6,timeStamp,plotID));
+			plantedQueue.push(new crop("grass","🌾",10000,5,6,timeStamp,plotID));
             break;
-        case "turnip":
-			plantedQueue.push(new crop("turnip",200000,40,50,timeStamp,plotID));
+        case "tulip":
+			plantedQueue.push(new crop("tulip","🌷",200000,40,50,timeStamp,plotID));
             break;
-        case "beet":
-            plantedQueue.push(new crop("turnip",360000,100,160,timeStamp,plotID));
+        case "fourLeafClover":
+            plantedQueue.push(new crop("fourLeafClover","🍀",360000,100,160,timeStamp,plotID));
             break;
-        case "rhubarb":
-            plantedQueue.push(new crop("turnip",700000,240,380,timeStamp,plotID));
+        case "rose":
+            plantedQueue.push(new crop("rose","🌹",700000,240,380,timeStamp,plotID));
+            break;
+		case "cactus":
+            plantedQueue.push(new crop("cactus","🌵",700000,240,380,timeStamp,plotID));
+            break;
+		case "palmTree":
+            plantedQueue.push(new crop("palmTree","🌴",700000,240,380,timeStamp,plotID));
+            break;
+		case "wishTree":
+            plantedQueue.push(new crop("wishTree","🎋",700000,240,380,timeStamp,plotID));
+            break;
+		case "bacon":
+            plantedQueue.push(new crop("bacon","🥓",10,240,380,timeStamp,plotID));
+            break;
+		case "mixtape":
+            plantedQueue.push(new crop("mixtape","🔥",10,240,380,timeStamp,plotID));
+            break;
+		case "evidence":
+            plantedQueue.push(new crop("evidence","🔨",10,240,380,timeStamp,plotID));
             break;
     }
     //get price of last pushed item (what we just planted), and subtract it from our total.
@@ -93,14 +112,14 @@ function checkGrowth(){
         //should have remGrowTime in terms of milliseconds
         var currentTime = date.getTime();
 		plantedQueue[i].remGrowTime = plantedQueue[i].finishTime - currentTime;
-		//console.log(plantedQueue[i].remGrowTime);
 		
 		//once the crop has matured, the crop item is to be moved to the decay queue, where
 		//it is able to be harvested. when the time for the decay queue is up, then the plant decays.
 		if (plantedQueue[i].remGrowTime<0){
 			plantedQueue[i].state = "grown";
+			
 			document.getElementById(plantedQueue[i].plotID).style.backgroundColor = "BurlyWood";
-			document.getElementById(plantedQueue[i].plotID).innerHTML = "🌾";
+			document.getElementById(plantedQueue[i].plotID).innerHTML = plantedQueue[i].icon;
             plantedQueue[i].decayTime = currentTime + (plantedQueue[i].growTime*2);
 			plantDecayQueue.push(plantedQueue[i])
 		}
