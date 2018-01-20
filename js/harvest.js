@@ -9,6 +9,7 @@ function harvest(plotID){
             document.getElementById(plotID).style.backgroundColor="rosybrown";
             document.getElementById(plotID).innerHTML=" ";
             plantDecayQueue.splice(index,1);
+            document.getElementById("moneyInfo").innerHTML = globalVal.money;
         }
         else{
             console.log("Crop isn't mature!")

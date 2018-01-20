@@ -14,6 +14,11 @@ function crop(name,growTime,buyPrice,sellPrice,timeStamp,plotID){
 	this.decayTime = null;
 }
 
+var globalVal = {
+	money: 10,
+	currentTool: "inspect",
+}
+
 var cropList = [new crop("grass",10,2,3)];
 
 var plantedQueue = [];
@@ -45,9 +50,6 @@ function plant(cropName,plotID){
 		console.log("DUPLICATE");
 		return;
 	}
-	
-    document.getElementById(plotID).style.backgroundColor = "Green";
-	document.getElementById(plotID).innerHTML = "🌱";
 	var date = new Date();
 	timeStamp = date.getTime();
 	console.log(timeStamp);
@@ -59,9 +61,22 @@ function plant(cropName,plotID){
 			plantedQueue.push(new crop("turnip",200000,40,50,timeStamp,plotID));
             break;
         case "beet":
+            plantedQueue.push(new crop("turnip",360000,100,160,timeStamp,plotID));
             break;
         case "rhubarb":
+            plantedQueue.push(new crop("turnip",700000,240,380,timeStamp,plotID));
             break;
+    }
+    //get price of last pushed item (what we just planted), and subtract it from our total.
+    if ((globalVal.money - plantedQueue[plantedQueue.length-1].buyPrice) >= 0){
+        document.getElementById(plotID).style.backgroundColor = "Green";
+        document.getElementById(plotID).innerHTML = "🌱";
+        globalVal.money -= plantedQueue[plantedQueue.length-1].buyPrice;
+        document.getElementById("moneyInfo").innerHTML=globalVal.money;
+    }
+    else{
+        console.log("Insufficient funds!");
+        plantedQueue.pop();
     }
 	console.log(plantedQueue);
 }
@@ -99,7 +114,7 @@ function checkGrowth(){
         var spliceArray = [];
         if (plantDecayQueue[i].decayTime < currentTime){
             plantDecayQueue[i].state = "dead";
-           	document.getElementById(plantDecayQueue[i].plotID).style.backgroundColor = " dark brown";
+           	document.getElementById(plantDecayQueue[i].plotID).style.backgroundColor = "rosybrown";
 			document.getElementById(plantDecayQueue[i].plotID).innerHTML ="";
             console.log("DEAD");
         }  
@@ -112,5 +127,5 @@ function checkGrowth(){
     */
 }
 
-
+document.getElementById("moneyInfo").innerHTML = globalVal.money;
 setInterval(checkGrowth,1000);

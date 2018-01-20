@@ -1,8 +1,4 @@
 
-var globalVal = {
-	money: 10,
-	currentTool: "inspect",
-}
 
 function selTool(toolID){
 	globalVal.currentTool=toolID;
