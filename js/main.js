@@ -1,14 +1,14 @@
-
-
 function selTool(toolID){
 	globalVal.currentTool=toolID;
 	console.log(globalVal.currentTool);
 }
+
 function usePlot(plotID){
     console.log("usePlotCall");
     switch(globalVal.currentTool){
         case "inspect":
-            inspect(plotID);
+			chosenPlotID = plotID;
+			inspect();
             break;
         case "harvest":
             harvest(plotID);

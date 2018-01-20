@@ -48,6 +48,7 @@ function isDuplicatePlot(testPlotID){
 function plant(cropName,plotID){
 	console.log(plotID);
 	if(isDuplicatePlot(plotID)){
+		printToConsole("Can't plant here!",2000);
 		console.log("DUPLICATE");
 		return;
 	}
@@ -91,9 +92,10 @@ function plant(cropName,plotID){
         document.getElementById(plotID).style.backgroundColor = "Green";
         document.getElementById(plotID).innerHTML = "🌱";
         globalVal.money -= plantedQueue[plantedQueue.length-1].buyPrice;
-        document.getElementById("moneyInfo").innerHTML=globalVal.money;
+        document.getElementById("moneyInfo").innerHTML="$"+globalVal.money;
     }
     else{
+		printToConsole("Not enough money!",2000);
         console.log("Insufficient funds!");
         plantedQueue.pop();
     }
@@ -117,7 +119,6 @@ function checkGrowth(){
 		//it is able to be harvested. when the time for the decay queue is up, then the plant decays.
 		if (plantedQueue[i].remGrowTime<0){
 			plantedQueue[i].state = "Grown";
-			
 			document.getElementById(plantedQueue[i].plotID).style.backgroundColor = "BurlyWood";
 			document.getElementById(plantedQueue[i].plotID).innerHTML = plantedQueue[i].icon;
             plantedQueue[i].decayTime = currentTime + (plantedQueue[i].growTime*2);
@@ -146,5 +147,15 @@ function checkGrowth(){
     */
 }
 
-document.getElementById("moneyInfo").innerHTML = globalVal.money;
+document.getElementById("moneyInfo").innerHTML = "$"+globalVal.money;
 setInterval(checkGrowth,500);
+
+var consoleTimeout;
+function printToConsole(message, time){
+	clearTimeout(consoleTimeout)
+	document.getElementById("consoleMessage").innerHTML = message;
+	consoleTimeout = setTimeout(resetTimeOut,time);
+}
+function resetTimeOut(){
+	document.getElementById("consoleMessage").innerHTML = "So far so good!";
+}
