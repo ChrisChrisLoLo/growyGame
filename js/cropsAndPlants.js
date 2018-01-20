@@ -147,4 +147,4 @@ function checkGrowth(){
 }
 
 document.getElementById("moneyInfo").innerHTML = globalVal.money;
-setInterval(checkGrowth,1000);
+setInterval(checkGrowth,500);

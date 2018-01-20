@@ -22,14 +22,21 @@ function searchCropWithID(inputPlotID){
     }
 }
 
+function millisToTime(millis){
+	var seconds = Math.floor((millis/1000)%60);
+	var minutes = Math.floor((millis/(60*1000))%60);
+	//var hours = Math.floor((millis/(60*60*1000)%60);
+	return minutes + ":" + seconds;
+}
+
+
 function inspect(inputPlotID){
     var inspectedLand = searchCropWithID(inputPlotID);
     if (!inspectedLand){
         document.getElementById("plotInfo").innerHTML = "Dirt";
     }
     else{
-        var infoString=  "Type: "+ inspectedLand.name+"State: "+inspectedLand.state+"Remaining Time: "+inspectedLand.remGrowTime;
+        var infoString=  "Type:"+ inspectedLand.name+" State:"+inspectedLand.state+" Remaining Time: "+millisToTime(inspectedLand.remGrowTime);
         document.getElementById("plotInfo").innerHTML = infoString;
     }
-
 }
