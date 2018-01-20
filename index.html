@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--Initail CSS styling from https://www.w3schools.com/css/css_rwd_grid.asp-->
 <!--Most code involving setting up the responsive grid view is used from the W3schools website-->
+<!--http://www.color-hex.com/color-palette/53152-->
 <html>
 	<head>
 		<!--meta allows browser to control scaling, helps for mobile-->
@@ -10,7 +11,7 @@
 
 			html{
 				font-family: "emojiFont","Lucida Sans",sans-serif;
-				background-color: dimgray;
+				background-color: #264653;
                 font-size: 18px
 			}
 			*{
@@ -18,6 +19,7 @@
 			}
 			body{
 				height: 100%;
+				margin:0px;
 			}
 			.col-1 {width: 8.33%;}
 			.col-2 {width: 16.66%;}
@@ -51,11 +53,22 @@
 			}
 			.header{
 				margin: 0px;
-				background-color: darkgrey;
+				background-color: #264653;
+				color:white;
 				padding:5px;
+			}
+			#gameConsole{
+				
+				background-color: #2EC4B6;
 			}
 			#gamePanel{
 				height: 450px;
+			}
+			#statsPanel{
+				background-color: #F4A261;
+			}
+			#tabPanel{
+				background-color: #E76F51;
 			}
 			.buttonRow{
 				//align-content: center;
@@ -87,17 +100,18 @@
 			#toolCol{
 				height: 100%;
 				overflow-y: auto;
-				background-image: url("art/wood.png");
+				/*background-image: url("art/wood.png");*/
+				background-color: #E9C46A;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="header" id="tabPanel">
+		<div class="header">
 			<h1>GrowyGame</h1>
 			<p>Game by Christian Lo</p>
 		</div>
 		<div class="row">
-		  	<div class="col-9">
+		  	<div class="col-12" id="gameConsole">
 				Console: <span id="consoleMessage">👌</span>
 			</div> <!-- 75% -->
 			<!--div class="col-3">TOOLS:</div> <!-- 25% -->
